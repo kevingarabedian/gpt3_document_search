@@ -1,0 +1,15 @@
+# Thus is an example only
+# cmd: docker volume create my-shared-volume
+# you could use swarm and cluster fs for redundancy, if desired.
+version: "3.9"
+services:
+  app:
+    image: my-app
+    volumes:
+      - my-shared-volume:/app/data
+  db:
+    image: my-db
+    volumes:
+      - my-shared-volume:/var/lib/mysql
+volumes:
+  my-shared-volume:
